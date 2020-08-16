@@ -42,43 +42,43 @@ and open the template in the editor.
                                 And gain access to a pool of expert freelancers for any job,
                                 Online.
                             </p>
+                            <h:messages globalOnly="true" infoClass="info" style="text-align: center; color: #57D38C;"></h:messages><br/>
                             <div class="page-links">
                                 <a href="freelancerRegister.xhtml">FreeLancer</a
                                 ><a href="employeerRegister.xhtml" class="active">Employeer</a>
                             </div>
                             <h:form>
                                 <h:inputText
-                                    class="form-control" required="true" p:placeholder="First Name"
-                                    />
-                                <!--                  type="text"
-                                                  name="fName"
-                                                  placeholder="First Name"-->
+                                    class="form-control" id="fname" p:placeholder="First Name" value="#{userController.user.firstName}" required="true"
+                                    requiredMessage="The firstname is required">
+                                </h:inputText>
+                                <h:message for="fname" class="errors"></h:message>
+
 
                                 <h:inputText
-                                    class="form-control" required="true" p:placeholder="Last Name"
-                                    />
-                                <!--                  type="text"
-                                                  name="lName"
-                                                  placeholder="Last Name"-->
+                                    class="form-control" id="lname" p:placeholder="Last Name"  value="#{userController.user.lastName}" required="true"
+                                    requiredMessage="The lastname is required"></h:inputText>
+                                <h:message for="lname" class="errors"></h:message>
+
 
                                 <h:inputText
-                                    class="form-control" required="true" p:placeholder="E-mail Address"
-                                    />
-                                <!--                  type="text"
-                                                  name="email"
-                                                  placeholder="E-mail Address"-->
+                                    class="form-control" id="email" required="true" requiredMessage="The email is required" validatorMessage="The provided email is not of valid" p:placeholder="E-mail Address"  value="#{userController.user.email}">
+                                    <f:validateRegex pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" />
+                                </h:inputText>
+                                <h:message for="email" class="errors"></h:message>
 
-                                <h:inputText 
-                                    class="form-control" required="true" p:placeholder="Password"
-                                    />
-                                <!--                  type="password"
-                                                  name="password"
-                                                  placeholder="Password"-->
+
+                                <h:inputSecret
+                                    class="form-control" id="password" p:placeholder="Password"  value="#{userController.user.password}" required="true" requiredMessage="The password is required" validatorMessage="The password must be atleast 8 characters">
+                                    <f:validateLength minimum="8"/>
+                                </h:inputSecret>
+                                <h:message for="password" class="errors"></h:message>
+
 
                                 <div class="form-button">
-                                    <button id="submit" type="submit" class="ibtn">
-                                        Register
-                                    </button>
+                                    <h:commandButton value="Register" class="ibtn" action="#{userController.saveEmployeer()}">
+
+                                    </h:commandButton>
                                     <a href="login.xhtml">Already have an account? Login</a>
                                 </div>
                             </h:form>

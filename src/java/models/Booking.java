@@ -27,7 +27,7 @@ public class Booking {
     private Double totalPrice;
     private boolean paymentStatus=false;
     @ManyToOne
-    private User user;
+    private Users user;
 
     public String getId() {
         return id;

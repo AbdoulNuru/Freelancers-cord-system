@@ -6,7 +6,7 @@
 package models;
 
 import dao.GenericDao;
-import hibernateUtil.NewHibernateUtil;
+import dao.NewHibernateUtil;
 
 /**
  *
@@ -14,9 +14,9 @@ import hibernateUtil.NewHibernateUtil;
  */
 public class NewClass {
     public static void main(String[] args) {
-       User user = new User();
+       Users user = new Users();
        user.setFirstName("hello");
-       new GenericDao<User>().create(user);
+       new GenericDao<Users>().create(user);
         
     }
     

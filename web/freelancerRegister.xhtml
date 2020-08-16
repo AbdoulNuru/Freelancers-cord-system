@@ -43,69 +43,74 @@ and open the template in the editor.
                             <p>
                                 And gain access to a pool of employeers for any job, Online.
                             </p>
-                            <div class="page-links">
-                                <a href="freelancerRegister.xhtml" class="active">FreeLancer</a
-                                ><a href="employeerRegister.xhtml">Employeer</a>
-                            </div>
-                            <h:form>
-                                <h:inputText
-                                    class="form-control" p:placeholder="First Name"/>
-                                <!--                  type="text"
-                                                  name="fName"
-                                                  placeholder="First Name"
-                                                  required-->
-
-                                <h:inputText
-                                    class="form-control" p:placeholder="Last Name"/>
-                                <!--                  type="text"
-                                                  name="lName"
-                                                  placeholder="Last Name"
-                                                  required-->
-
-                                <h:inputText
-                                    class="form-control" p:placeholder="E-mail Address"/>
-                                <!--                  type="text"
-                                                  name="email"
-                                                  placeholder="E-mail Address"
-                                                  required-->
-
-                                <h:selectOneMenu
-                                    class="form-control"
-                                    style="
-                                    background-color: #f7f7f7;
-                                    color: #000;
-                                    margin-bottom: 14px;
-                                    border: 0;
-                                    font: Lato sans;
-                                    font-size: 1rem;
-                                    font-weight: 300;
-                                    "
-                                    >
-                                    <f:selectItem itemValue = "" itemLabel = "Category" />
-                                    <f:selectItem itemValue = "" itemLabel = "Photographer" />
-                                    <f:selectItem itemValue = "" itemLabel = "Graphic designer" />
-                                </h:selectOneMenu>
-                                <h:inputText
-                                    class="form-control" p:placeholder="Hourly rate in $"/>
-                                <!--                  type="number"
-                                                  name="rate"
-                                                  placeholder="Hourly rate in $"
-                                                  required-->
-
-                                <h:inputSecret
-                                    class="form-control" p:placeholder="Password"/>
-                                <!--                  type="password"
-                                                  name="password"
-                                                  placeholder="Password"
-                                                  required-->
-
-                                <div class="form-button">
-                                    <button id="submit" type="submit" class="ibtn">
-                                        Register
-                                    </button>
-                                    <a href="login.xhtml">Already have an account? Login</a>
+                            <h:messages globalOnly="true"></h:messages><br/>
+                             
+                                <div class="page-links">
+                                    <a href="freelancerRegister.xhtml" class="active">FreeLancer</a
+                                    ><a href="employeerRegister.xhtml">Employeer</a>
                                 </div>
-                            </h:form>
+                                <h:form>
+                                    <h:inputText
+                                        class="form-control" id="fname" p:placeholder="First Name" value="#{userController.user.firstName}" required="true"
+                                        requiredMessage="The firstname is required">
+                                    </h:inputText>
+                                    <h:message for="fname" class="errors"></h:message>
+
+
+                                    <h:inputText
+                                        class="form-control" id="lname" p:placeholder="Last Name"  value="#{userController.user.lastName}" required="true"
+                                        requiredMessage="The lastname is required"></h:inputText>
+                                    <h:message for="lname" class="errors"></h:message>
+
+
+                                    <h:inputText
+                                        class="form-control" id="email" required="true" requiredMessage="The email is required" validatorMessage="The provided email is not of valid" p:placeholder="E-mail Address"  value="#{userController.user.email}">
+                                        <f:validateRegex pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" />
+                                    </h:inputText>
+                                    <h:message for="email" class="errors"></h:message>
+
+                                    <h:selectOneMenu
+                                        class="form-control"
+                                        id="cat"
+                                        style="
+                                        background-color: #f7f7f7;
+                                        color: #000;
+                                        margin-bottom: 14px;
+                                        border: 0;
+                                        font: Lato sans;
+                                        font-size: 1rem;
+                                        font-weight: 300;
+                                        "
+                                        required="true"
+                                        requiredMessage="Please select a category"
+                                        value="#{userController.user.category}"
+                                        >
+                                        <f:selectItem itemLabel = "Category" />
+                                        <f:selectItem itemValue = "Photographer" itemLabel = "Photographer" />
+                                        <f:selectItem itemValue = "Graphic designer" itemLabel = "Graphic designer" />
+                                    </h:selectOneMenu>
+                                    <h:message for="cat" class="errors"></h:message>
+
+                                    <h:inputText
+                                        class="form-control" id="rate" p:placeholder="Hourly rate in $"  value="#{userController.user.pricePerHour}" required="true" requiredMessage="The hourly rate is required" validatorMessage="The rate must be a number" converterMessage="Please enter digits only.">
+                                    </h:inputText>
+                                    <h:message for="rate" class="errors"></h:message>
+
+
+                                    <h:inputSecret
+                                        class="form-control" id="password" p:placeholder="Password"  value="#{userController.user.password}" required="true" requiredMessage="The password is required" validatorMessage="The password must be atleast 8 characters">
+                                        <f:validateLength minimum="8"/>
+                                    </h:inputSecret>
+                                    <h:message for="password" class="errors"></h:message>
+
+
+                                    <div class="form-button">
+                                        <h:commandButton value="Register" class="ibtn" action="#{userController.save()}">
+
+                                        </h:commandButton>
+                                        <a href="login.xhtml">Already have an account? Login</a>
+                                    </div>
+                                </h:form>
                         </div>
                     </div>
                 </div>
