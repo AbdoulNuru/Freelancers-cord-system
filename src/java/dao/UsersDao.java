@@ -14,16 +14,17 @@ import org.hibernate.Session;
  *
  * @author Abdoul Nuru
  */
-public class UsersDao extends GenericDao<Users>{
-    public List<Users> findById(String id){
+public class UsersDao extends GenericDao<Users> {
+
+    public List<Users> findById(String id) {
         Session ss = NewHibernateUtil.getSessionFactory().openSession();
         Query q = ss.createQuery("from Users where id =:d");
         q.setString("d", id);
         List<Users> uno = q.list();
         return uno;
     }
-    
-    public List<Users> findByEmail(String email){
+
+    public List<Users> findByEmail(String email) {
         Session ss = NewHibernateUtil.getSessionFactory().openSession();
         Query q = ss.createQuery("from Users where email =:d");
         q.setString("d", email);

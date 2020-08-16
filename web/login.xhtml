@@ -24,7 +24,7 @@ and open the template in the editor.
                 <a href="index.html">
                     <div class="logo">
                         <img class="logo-size" src="images/logo-light.svg" alt="" />
-          
+
                     </div>
                 </a>
             </div>
@@ -43,26 +43,29 @@ and open the template in the editor.
                                 And gain access to a pool of expert freelancers for any job,
                                 Online.
                             </p>
-
+                            <h:messages globalOnly="true" infoClass="info" style="text-align: center; color: red;"></h:messages><br/>
                             <h:form>
-                               
-<!--                                    type="text"
-                                    name="username"
-                                    placeholder="E-mail Address"-->
-                                    <!--                                    required-->
-                                    <h:inputText class="form-control" p:placeholder="E-mail Address"/>
-                               
-<!--                                    type="password"
-                                    name="password"
-                                    placeholder="Password"-->
-                                    <!--                                    required-->
-                                    <h:inputSecret class="form-control" p:placeholder="Password"/>
+
+                                <h:inputText
+                                    class="form-control" id="email" required="true" requiredMessage="The email is required" validatorMessage="The provided email is not of valid" p:placeholder="E-mail Address"  value="#{userController.user.email}">
+                                    <f:validateRegex pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" />
+                                </h:inputText>
+                                <h:message for="email" class="errors"></h:message>
+
+                                <h:inputSecret
+                                    class="form-control" id="password" p:placeholder="Password"  value="#{userController.user.password}" required="true" requiredMessage="The password is required" validatorMessage="The password must be atleast 8 characters">
+                                    <f:validateLength minimum="8"/>
+                                </h:inputSecret>
+                                <h:message for="password" class="errors"></h:message>
                                 <div class="form-button">
-                                    <button id="submit" type="submit" class="ibtn">Login</button>
+                                    <h:commandButton value="Register" class="ibtn" action="#{userController.login()}">
+                                        Login
+                                    </h:commandButton>
                                     <a href="freelancerRegister.xhtml"
                                        >Don't have an account? Register</a
                                     >
                                 </div>
+
                             </h:form>
                         </div>
                     </div>
