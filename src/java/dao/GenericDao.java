@@ -6,7 +6,6 @@
 package dao;
 
 import org.hibernate.Session;
-import hibernateUtil.NewHibernateUtil;
 
 /**
  *
