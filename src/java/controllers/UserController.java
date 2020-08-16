@@ -49,6 +49,29 @@ public class UserController {
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
 
+    public String login() throws NoSuchAlgorithmException {
+        List<Users> exist = new UsersDao().findByEmail(user.getEmail());
+
+        if (exist.isEmpty()) {
+            FacesMessage message = new FacesMessage("You don't have an account, please register");
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        }
+
+        if (!exist.isEmpty()) {
+            if (!exist.get(0).getPassword().equalsIgnoreCase(encryptPassword(user.getPassword()))) {
+                FacesMessage message = new FacesMessage("Incorrect email or password");
+                FacesContext.getCurrentInstance().addMessage(null, message);
+            } else {
+                if(exist.get(0).getRole().equalsIgnoreCase("freelancer")){
+                    return "freelancerRegister.xhtml";
+                }else{
+                    return "employeerRegister.xhtml";
+                }
+            }
+        }
+        return null;
+    }
+
     public Users getUser() {
         return user;
     }
@@ -56,8 +79,8 @@ public class UserController {
     public void setUser(Users user) {
         this.user = user;
     }
-    
-     public String encryptPassword(String password) throws NoSuchAlgorithmException {
+
+    public String encryptPassword(String password) throws NoSuchAlgorithmException {
 
         String pas = password;
         MessageDigest md = MessageDigest.getInstance("MD5");
