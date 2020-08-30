@@ -96,8 +96,9 @@ public class UserController {
     }
     
     public List<Users> getAllFreelancers(){
-    return new UsersDao().allUsers("from Users");
-        
+
+    return new UsersDao().allUsers("freelancer");
+      
     }
 
     public List<Users> getGetAllUsers() {

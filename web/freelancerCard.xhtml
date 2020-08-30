@@ -44,7 +44,9 @@
             </style>
     </h:head>
     <h:body>
-        <c:forEach items="#{userController.getAllUsers}" var="item">
+
+        <c:forEach items="#{userController.getAllFreelancers()}" var="item">
+
         <h2 style="text-align:center">Freelancer Profile and Details</h2>
 
         <div class="card">
