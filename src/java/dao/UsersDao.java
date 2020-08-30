@@ -31,4 +31,9 @@ public class UsersDao extends GenericDao<Users> {
         List<Users> uno = q.list();
         return uno;
     }
+    
+     public List<Users>allUsers(String x){
+     
+     return NewHibernateUtil.getSessionFactory().openSession().createQuery(x).list();
+     }
 }
