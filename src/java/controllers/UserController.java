@@ -11,6 +11,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import models.Users;
 
@@ -19,10 +20,11 @@ import models.Users;
  * @author Abdoul Nuru
  */
 @ManagedBean
+@SessionScoped
 public class UserController {
 
     private Users user = new Users();
-
+    private List<Users> getAllUsers = new UsersDao().allUsers("from Users");
     public void save() throws NoSuchAlgorithmException {
         List<Users> userExist = new UsersDao().findByEmail(user.getEmail());
 
@@ -92,5 +94,20 @@ public class UserController {
         }
         return (sb.toString());
     }
+    
+    public List<Users> getAllFreelancers(){
+    return new UsersDao().allUsers("freelancer");
+        
+    }
 
+    public List<Users> getGetAllUsers() {
+        return getAllUsers;
+    }
+
+    public void setGetAllUsers(List<Users> getAllUsers) {
+        this.getAllUsers = getAllUsers;
+    }
+
+    
+    
 }
