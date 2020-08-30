@@ -65,7 +65,7 @@ public class UserController {
                 FacesContext.getCurrentInstance().addMessage(null, message);
             } else {
                 if(exist.get(0).getRole().equalsIgnoreCase("freelancer")){
-                    return "freelancerRegister.xhtml";
+                    return "freelancerDashboard.xhtml";
                 }else{
                     return "employeerRegister.xhtml";
                 }
