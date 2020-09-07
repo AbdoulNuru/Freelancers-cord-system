@@ -5,6 +5,7 @@
  */
 package dao;
 
+import java.io.Serializable;
 import org.hibernate.Session;
 
 /**
@@ -36,5 +37,12 @@ public class GenericDao<X> {
         ss.close();
     }
     
+      public X findByOne(Class sr, Serializable id) {
+        Session ss = NewHibernateUtil.getSessionFactory().openSession();
+        X src = (X) ss.get(sr, id);
+        ss.close();
+        return src;
+
+    }
     
 }

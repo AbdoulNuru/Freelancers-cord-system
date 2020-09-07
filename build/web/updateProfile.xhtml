@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form enctype="multipart/form-data">
+            <div >
+                <p:fileUpload  id="fileUpload" class="col-md-6 col-sm-6 col-xs-12 form-group has-feedback"   
+                               fileUploadListener="#{userController.upload}" mode="advanced" dragDropSupport="false"
+                               sizeLimit="100000000000000" fileLimit="10" 
+                               invalidFileMessage="Invalid Image Type"  allowTypes="/(\.|\/)(gif|jpe?g|png)$/" >
+                </p:fileUpload><br></br><br></br><br></br><br></br><br></br><br></br>
+            </div>
+            <h:commandButton value="create" class="btn btn-success" action="#{userController.updateFreelancerProfile()}">
+                                                    </h:commandButton>
+        </h:form>
+    </h:body>
+</html>
+
