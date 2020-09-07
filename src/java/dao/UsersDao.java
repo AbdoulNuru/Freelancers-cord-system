@@ -6,9 +6,12 @@
 package dao;
 
 import java.util.List;
+import models.Image;
 import models.Users;
+import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -44,4 +47,6 @@ public class UsersDao extends GenericDao<Users> {
         return uno;
 
      }
+    
+  
 }

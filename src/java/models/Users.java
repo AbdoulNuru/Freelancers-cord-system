@@ -8,6 +8,7 @@ package models;
 import java.util.List;
 import java.util.UUID;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -118,7 +119,14 @@ public class Users {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return "Users{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", category=" + category + ", pricePerHour=" + pricePerHour + ", status=" + status + ", role=" + role + ", password=" + password + ", booking=" + booking + '}';
+    }
+
     
+   
     
     
     
