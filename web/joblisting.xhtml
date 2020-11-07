@@ -1,0 +1,918 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Jobs Listing</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="icon" href="images/favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/scrollbar.css" />
+    <link rel="stylesheet" href="css/fontawesome/fontawesome-all.css" />
+    <link rel="stylesheet" href="css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="css/jquery-ui.css" />
+    <link rel="stylesheet" href="css/linearicons.css" />
+    <link rel="stylesheet" href="css/tipso.css" />
+    <link rel="stylesheet" href="css/chosen.css" />
+    <link rel="stylesheet" href="css/prettyPhoto.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/color.css" />
+    <link rel="stylesheet" href="css/transitions.css" />
+    <link rel="stylesheet" href="css/responsive.css" />
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+  </head>
+  <body class="wt-login">
+    <!-- Preloader Start -->
+    <div class="preloader-outer">
+      <div class="loader"></div>
+    </div>
+    <!-- Preloader End -->
+    <!-- Wrapper Start -->
+    <div id="wt-wrapper" class="wt-wrapper wt-haslayout">
+      <!-- Content Wrapper Start -->
+      <div class="wt-contentwrapper">
+        <!-- Header Start -->
+        <header id="wt-header" class="wt-header wt-headervtwo wt-haslayout">
+          <div class="wt-navigationarea">
+            <div class="container-fluid">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <strong class="wt-logo"
+                    ><a href="index.html"
+                      ><img src="images/logo.png" alt="company logo here" /></a
+                  ></strong>
+                  <div class="wt-rightarea">
+                    <nav id="wt-nav" class="wt-nav navbar-expand-lg">
+                      <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-toggle="collapse"
+                        data-target="#navbarNav"
+                        aria-controls="navbarNav"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation"
+                      >
+                        <i class="lnr lnr-menu"></i>
+                      </button>
+                      <div
+                        class="collapse navbar-collapse wt-navigation"
+                        id="navbarNav"
+                      >
+                        <ul class="navbar-nav">
+                          <li
+                            class="menu-item-has-children page_item_has_children"
+                          >
+                            <a href="joblisting.html">Browse Jobs</a>
+                          </li>
+                          <li
+                            class="menu-item-has-children page_item_has_children"
+                          >
+                            <a href="javascript:void(0);">View Freelancers</a>
+                            <ul class="sub-menu">
+                              <li>
+                                <a href="index.html">User Listing</a>
+                              </li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                    </nav>
+
+                    <div class="wt-userlogedin">
+                      <figure class="wt-userimg">
+                        <img src="images/sandy.jpg" alt="image description" />
+                      </figure>
+                      <div class="wt-username">
+                        <h3>Sandy</h3>
+                        <span>Sandy Images</span>
+                      </div>
+                      <nav class="wt-usernav">
+                        <ul>
+                          <li>
+                            <a href="profile.xhtml">
+                              <span>My Profile</span>
+                            </a>
+                          </li>
+                          <li class="menu-item-has-children">
+                            <a href="javascript:void(0);">
+                              <span>All Jobs</span>
+                            </a>
+                            <ul class="sub-menu">
+                              <li>
+                                  <a href="joblisting.xhtml"
+                                  >Completed Jobs</a
+                                >
+                              </li>
+                              <li>
+                                  <a href="joblisting.xhtml"
+                                  >Cancelled Jobs</a
+                                >
+                              </li>
+                              <li>
+                                <a href="dashboard-ongoingjob.html"
+                                  >Ongoing Jobs</a
+                                >
+                              </li>
+                              <li>
+                                <a href="dashboard-ongoingsingle.html"
+                                  >Ongoing Single</a
+                                >
+                              </li>
+                            </ul>
+                          </li>
+                          <li>
+                              <a href="login.xhtml">
+                              <span>Logout</span>
+                            </a>
+                          </li>
+                        </ul>
+                      </nav>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+        <!--Header End-->
+        <!--Inner Home Banner Start-->
+        <div class="wt-haslayout wt-innerbannerholder">
+          <div class="container">
+            <div class="row justify-content-md-center">
+              <div
+                class="col-xs-12 col-sm-12 col-md-8 push-md-2 col-lg-6 push-lg-3"
+              >
+                <div class="wt-innerbannercontent">
+                  <div class="wt-title"><h2>Jobs Listing</h2></div>
+                  <ol class="wt-breadcrumb">
+                      <li><a href="joblisting.xhtml">Home</a></li>
+                    <li class="wt-active">Job</li>
+                  </ol>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Inner Home End-->
+        <!--Main Start-->
+        <main id="wt-main" class="wt-main wt-haslayout wt-innerbgcolor">
+          <div class="wt-haslayout wt-main-section">
+            <!-- Job Listing Start-->
+            <div class="wt-haslayout">
+              <div class="container">
+                <div class="row">
+                  <div id="wt-twocolumns" class="wt-twocolumns wt-haslayout">
+                    <div
+                      class="col-xs-12 col-sm-12 col-md-5 col-lg-5 col-xl-4 float-left"
+                    >
+                      <aside id="wt-sidebar" class="wt-sidebar">
+                        <div class="wt-widget wt-effectiveholder">
+                          <div class="wt-widgettitle">
+                            <h2>Categories</h2>
+                          </div>
+                          <div class="wt-widgetcontent">
+                            <h:form class="wt-formtheme wt-formsearch">
+                              <fieldset>
+                                <div class="form-group">
+                                  <input
+                                    type="text"
+                                    name="Search"
+                                    class="form-control"
+                                    placeholder="Search Category"
+                                  />
+                                  <a
+                                    href="javascrip:void(0);"
+                                    class="wt-searchgbtn"
+                                    ><i class="lnr lnr-magnifier"></i
+                                  ></a>
+                                </div>
+                              </fieldset>
+                              <fieldset>
+                                <div
+                                  class="wt-checkboxholder wt-verticalscrollbar"
+                                >
+                                  <span class="wt-checkbox">
+                                    <input
+                                      id="wordpress"
+                                      type="checkbox"
+                                      name="description"
+                                      value="company"
+                                    />
+                                    <label for="wordpress">Photography</label>
+                                  </span>
+                                  <span class="wt-checkbox">
+                                    <input
+                                      id="graphic"
+                                      type="checkbox"
+                                      name="description"
+                                      value="company"
+                                    />
+                                    <label for="graphic"> Graphic Design</label>
+                                  </span>
+                                  <span class="wt-checkbox">
+                                    <input
+                                      id="website"
+                                      type="checkbox"
+                                      name="description"
+                                      value="company"
+                                    />
+                                    <label for="website"> Website Design</label>
+                                  </span>
+                                  <span class="wt-checkbox">
+                                    <input
+                                      id="article"
+                                      type="checkbox"
+                                      name="description"
+                                      value="company"
+                                    />
+                                    <label for="article">
+                                      Article Writing</label
+                                    >
+                                  </span>
+                                  <span class="wt-checkbox">
+                                    <input
+                                      id="software"
+                                      type="checkbox"
+                                      name="description"
+                                      value="company"
+                                    />
+                                    <label for="software">
+                                      Software Architecture</label
+                                    >
+                                  </span>
+                                  <span class="wt-checkbox">
+                                    <input
+                                      id="wordpress1"
+                                      type="checkbox"
+                                      name="description"
+                                      value="company"
+                                    />
+                                    <label for="wordpress1"> WordPress</label>
+                                  </span>
+                                  <span class="wt-checkbox">
+                                    <input
+                                      id="graphic1"
+                                      type="checkbox"
+                                      name="description"
+                                      value="company"
+                                    />
+                                    <label for="graphic1">
+                                      Graphic Design</label
+                                    >
+                                  </span>
+                                </div>
+                              </fieldset>
+                            </h:form>
+                          </div>
+                        </div>
+                      </aside>
+                    </div>
+                    <div
+                      class="col-xs-12 col-sm-12 col-md-7 col-lg-7 col-xl-8 float-left"
+                    >
+                      <div class="wt-userlistingholder wt-haslayout">
+                        <div
+                          class="wt-userlistinghold wt-featured wt-userlistingholdvtwo"
+                        >
+                          <span class="wt-featuredtag"></span>
+                          <div class="wt-userlistingcontent">
+                            <div class="wt-contenthead">
+                              <div class="wt-title">
+                                <a href="usersingle.html"
+                                  ><i class="fa fa-check-circle"></i> Sandy
+                                  Images</a
+                                >
+                                <h2>I want some Professional Photographers</h2>
+                              </div>
+                              <div class="wt-description">
+                                <p>
+                                  Nisi ut aliquip ex ea commodo consequat duis
+                                  aute irure dolor in reprehenderit inati
+                                  voluptate velit esse cillum dolore eutates
+                                  fugiat nulla pariatur sunt in culpa asequi
+                                  officia deserunt mollit anim id est laborum ut
+                                  perspiciatis...
+                                </p>
+                              </div>
+                              <div class="wt-tag wt-widgettag">
+                                <a href="javascript:void(0);">Photography</a>
+                                <a href="javascript:void(0);">Photo Editing</a>
+                                <a href="javascript:void(0);">Videography</a>
+                              </div>
+                            </div>
+                            <div class="wt-viewjobholder">
+                              <ul>
+                                <li>
+                                  <span
+                                    ><i
+                                      class="fa fa-dollar-sign wt-viewjobdollar"
+                                    ></i
+                                    >Professional</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><em
+                                      ><!--<img
+                                        src="images/flag/img-04.png"
+                                        alt="img description" />--></em
+                                    >Kigali, Rwanda</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><i
+                                      class="far fa-folder wt-viewjobfolder"
+                                    ></i
+                                    >Type: Per Hour</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><i class="far fa-clock wt-viewjobclock"></i
+                                    >Duration: 03 Months</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><i class="fa fa-tag wt-viewjobtag"></i>Job
+                                    ID: gy3yV2Vm5u</span
+                                  >
+                                </li>
+                                <li>
+                                  <a
+                                    href="javascript:void(0);"
+                                    class="wt-clicklike wt-clicksave"
+                                    ><i class="fa fa-heart"></i> Save</a
+                                  >
+                                </li>
+                                <li class="wt-btnarea">
+                                  <a href="jobsingle.html" class="wt-btn"
+                                    >View Job</a
+                                  >
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="wt-userlistinghold wt-featured wt-userlistingholdvtwo"
+                        >
+                          <span class="wt-featuredtag"></span>
+                          <div class="wt-userlistingcontent">
+                            <div class="wt-contenthead">
+                              <div class="wt-title">
+                                <a href="usersingle.html"
+                                  ><i class="fa fa-check-circle"></i> Adventist
+                                  University Of Central Africa</a
+                                >
+                                <h2>Java &amp; Networking Assistant Teacher</h2>
+                              </div>
+                              <div class="wt-description">
+                                <p>
+                                  Nisi ut aliquip ex ea commodo consequat duis
+                                  aute irure dolor in reprehenderit inati
+                                  voluptate velit esse cillum dolore eutates
+                                  fugiat nulla pariatur sunt in culpa asequi
+                                  officia deserunt mollit anim id est laborum ut
+                                  perspiciatis...
+                                </p>
+                              </div>
+                              <div class="wt-tag wt-widgettag">
+                                <a href="javascript:void(0);">Java</a>
+                                <a href="javascript:void(0);">Networks</a>
+                                <a href="javascript:void(0);"
+                                  >Team Management</a
+                                >
+                              </div>
+                            </div>
+                            <div class="wt-viewjobholder">
+                              <ul>
+                                <li>
+                                  <span
+                                    ><i
+                                      class="fa fa-dollar-sign wt-viewjobdollar"
+                                    ></i
+                                    >Professional</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><em
+                                      ><!--<img
+                                        src="images/flag/img-02.png"
+                                        alt="img description" />--></em
+                                    >Kigali, Rwanda</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><i
+                                      class="far fa-folder wt-viewjobfolder"
+                                    ></i
+                                    >Type: Per Fixed</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><i class="far fa-clock wt-viewjobclock"></i
+                                    >Duration: 1 Year</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><i class="fa fa-tag wt-viewjobtag"></i>Job
+                                    ID: 5aUQgM2ZbW</span
+                                  >
+                                </li>
+                                <li>
+                                  <a
+                                    href="javascript:void(0);"
+                                    class="wt-clicklike"
+                                    ><i class="fa fa-heart"></i> Click to
+                                    Save</a
+                                  >
+                                </li>
+                                <li class="wt-btnarea">
+                                  <a href="jobsingle.html" class="wt-btn"
+                                    >View Job</a
+                                  >
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="wt-userlistinghold wt-featured wt-userlistingholdvtwo"
+                        >
+                          <span class="wt-featuredtag"></span>
+                          <div class="wt-userlistingcontent">
+                            <div class="wt-contenthead">
+                              <div class="wt-title">
+                                <a href="usersingle.html"
+                                  ><i class="fa fa-check-circle"></i> Guaranty
+                                  Trust Bank (Rwanda) plc
+                                </a>
+                                <h2>Experienced Software Developer</h2>
+                              </div>
+                              <div class="wt-description">
+                                <p>
+                                  Nisi ut aliquip ex ea commodo consequat duis
+                                  aute irure dolor in reprehenderit inati
+                                  voluptate velit esse cillum dolore eutates
+                                  fugiat nulla pariatur sunt in culpa asequi
+                                  officia deserunt mollit anim id est laborum ut
+                                  perspiciatis...
+                                </p>
+                              </div>
+                              <div class="wt-tag wt-widgettag">
+                                <a href="javascript:void(0);">C#</a>
+                                <a href="javascript:void(0);">Java</a>
+                                <a href="javascript:void(0);"
+                                  >Microsoft SQL Server</a
+                                >
+                                <a href="javascript:void(0);"
+                                  >Visual Studio 2019</a
+                                >
+                              </div>
+                            </div>
+                            <div class="wt-viewjobholder">
+                              <ul>
+                                <li>
+                                  <span
+                                    ><i
+                                      class="fa fa-dollar-sign wt-viewjobdollar"
+                                    ></i
+                                    >Professional</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><em
+                                      ><!--<img
+                                        src="images/flag/img-05.png"
+                                        alt="img description" />--></em
+                                    >Kigali, Rwanda</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><i
+                                      class="far fa-folder wt-viewjobfolder"
+                                    ></i
+                                    >Type: Per Hour</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><i class="far fa-clock wt-viewjobclock"></i
+                                    >Duration: 2 Years</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><i class="fa fa-tag wt-viewjobtag"></i>Job
+                                    ID: gy3yV2Vm5u</span
+                                  >
+                                </li>
+                                <li>
+                                  <a
+                                    href="javascript:void(0);"
+                                    class="wt-clicklike"
+                                    ><i class="fa fa-heart"></i> Click to
+                                    Save</a
+                                  >
+                                </li>
+                                <li class="wt-btnarea">
+                                  <a href="jobsingle.html" class="wt-btn"
+                                    >View Job</a
+                                  >
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="wt-userlistinghold wt-featured wt-userlistingholdvtwo"
+                        >
+                          <span class="wt-featuredtag"></span>
+                          <div class="wt-userlistingcontent">
+                            <div class="wt-contenthead">
+                              <div class="wt-title">
+                                <a href="usersingle.html"
+                                  ><i class="fa fa-check-circle"></i> Awesomity
+                                  Lab</a
+                                >
+                                <h2>Quality Assurance Engineer</h2>
+                              </div>
+                              <div class="wt-description">
+                                <p>
+                                  Nisi ut aliquip ex ea commodo consequat duis
+                                  aute irure dolor in reprehenderit inati
+                                  voluptate velit esse cillum dolore eutates
+                                  fugiat nulla pariatur sunt in culpa asequi
+                                  officia deserunt mollit anim id est laborum ut
+                                  perspiciatis...
+                                </p>
+                              </div>
+                              <div class="wt-tag wt-widgettag">
+                                <a href="javascript:void(0);">Testing</a>
+                                <a href="javascript:void(0);"
+                                  >Continious Integration</a
+                                >
+                              </div>
+                            </div>
+                            <div class="wt-viewjobholder">
+                              <ul>
+                                <li>
+                                  <span
+                                    ><i
+                                      class="fa fa-dollar-sign wt-viewjobdollar"
+                                    ></i
+                                    >Professional</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><em
+                                      ><!--<img
+                                        src="images/flag/img-01.png"
+                                        alt="img description" />--></em
+                                    >Kigali, Rwanda</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><i
+                                      class="far fa-folder wt-viewjobfolder"
+                                    ></i
+                                    >Type: Per Hour</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><i class="far fa-clock wt-viewjobclock"></i
+                                    >Duration: 3 Years</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><i class="fa fa-tag wt-viewjobtag"></i>Job
+                                    ID: gy3yV2Vm5u</span
+                                  >
+                                </li>
+                                <li>
+                                  <a
+                                    href="javascript:void(0);"
+                                    class="wt-clicklike"
+                                    ><i class="fa fa-heart"></i> Click to
+                                    Save</a
+                                  >
+                                </li>
+                                <li class="wt-btnarea">
+                                  <a href="jobsingle.html" class="wt-btn"
+                                    >View Job</a
+                                  >
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="wt-userlistinghold wt-featured wt-userlistingholdvtwo"
+                        >
+                          <span class="wt-featuredtag"></span>
+                          <div class="wt-userlistingcontent">
+                            <div class="wt-contenthead">
+                              <div class="wt-title">
+                                <a href="usersingle.html"
+                                  ><i class="fa fa-check-circle"></i> RRA
+                                </a>
+                                <h2>Data Entry</h2>
+                              </div>
+                              <div class="wt-description">
+                                <p>
+                                  Nisi ut aliquip ex ea commodo consequat duis
+                                  aute irure dolor in reprehenderit inati
+                                  voluptate velit esse cillum dolore eutates
+                                  fugiat nulla pariatur sunt in culpa asequi
+                                  officia deserunt mollit anim id est laborum ut
+                                  perspiciatis...
+                                </p>
+                              </div>
+                              <div class="wt-tag wt-widgettag">
+                                <a href="javascript:void(0);">Excel</a>
+                                <a href="javascript:void(0);">Word</a>
+                              </div>
+                            </div>
+                            <div class="wt-viewjobholder">
+                              <ul>
+                                <li>
+                                  <span
+                                    ><i
+                                      class="fa fa-dollar-sign wt-viewjobdollar"
+                                    ></i
+                                    >Intermediate</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><em
+                                      ><!--<img
+                                        src="images/flag/img-03.png"
+                                        alt="img description" />--></em
+                                    >Kigali, Rwanda</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><i
+                                      class="far fa-folder wt-viewjobfolder"
+                                    ></i
+                                    >Type: Per Fixed</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><i class="far fa-clock wt-viewjobclock"></i
+                                    >Duration: 15 Days</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><i class="fa fa-tag wt-viewjobtag"></i>Job
+                                    ID: bsf3NAxTMj</span
+                                  >
+                                </li>
+                                <li>
+                                  <a
+                                    href="javascript:void(0);"
+                                    class="wt-clicklike wt-clicksave"
+                                    ><i class="fa fa-heart"></i> Save</a
+                                  >
+                                </li>
+                                <li class="wt-btnarea">
+                                  <a href="jobsingle.html" class="wt-btn"
+                                    >View Job</a
+                                  >
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="wt-userlistinghold wt-featured wt-userlistingholdvtwo"
+                        >
+                          <span class="wt-featuredtag"></span>
+                          <div class="wt-userlistingcontent">
+                            <div class="wt-contenthead">
+                              <div class="wt-title">
+                                <a href="usersingle.html"
+                                  ><i class="fa fa-check-circle"></i> Irembo</a
+                                >
+                                <h2>Team Lead</h2>
+                              </div>
+                              <div class="wt-description">
+                                <p>
+                                  Nisi ut aliquip ex ea commodo consequat duis
+                                  aute irure dolor in reprehenderit inati
+                                  voluptate velit esse cillum dolore eutates
+                                  fugiat nulla pariatur sunt in culpa asequi
+                                  officia deserunt mollit anim id est laborum ut
+                                  perspiciatis...
+                                </p>
+                              </div>
+                              <div class="wt-tag wt-widgettag">
+                                <a href="javascript:void(0);"
+                                  >Team Management</a
+                                >
+                              </div>
+                            </div>
+                            <div class="wt-viewjobholder">
+                              <ul>
+                                <li>
+                                  <span
+                                    ><i
+                                      class="fa fa-dollar-sign wt-viewjobdollar"
+                                    ></i
+                                    >Professional</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><em
+                                      ><!--<img
+                                        src="images/flag/img-02.png"
+                                        alt="img description" />--></em
+                                    >Kigali, Rwanda</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><i
+                                      class="far fa-folder wt-viewjobfolder"
+                                    ></i
+                                    >Type: Per Fixed</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><i class="far fa-clock wt-viewjobclock"></i
+                                    >Duration: 4 Years</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><i class="fa fa-tag wt-viewjobtag"></i>Job
+                                    ID: 5aUQgM2ZbW</span
+                                  >
+                                </li>
+                                <li>
+                                  <a
+                                    href="javascript:void(0);"
+                                    class="wt-clicklike"
+                                    ><i class="fa fa-heart"></i> Click to
+                                    Save</a
+                                  >
+                                </li>
+                                <li class="wt-btnarea">
+                                  <a href="jobsingle.html" class="wt-btn"
+                                    >View Job</a
+                                  >
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                        <div
+                          class="wt-userlistinghold wt-featured wt-userlistingholdvtwo"
+                        >
+                          <span class="wt-featuredtag"></span>
+                          <div class="wt-userlistingcontent">
+                            <div class="wt-contenthead">
+                              <div class="wt-title">
+                                <a href="usersingle.html"
+                                  ><i class="fa fa-check-circle"></i> Hexacomb
+                                </a>
+                                <h2>Web Designer</h2>
+                              </div>
+                              <div class="wt-description">
+                                <p>
+                                  Nisi ut aliquip ex ea commodo consequat duis
+                                  aute irure dolor in reprehenderit inati
+                                  voluptate velit esse cillum dolore eutates
+                                  fugiat nulla pariatur sunt in culpa asequi
+                                  officia deserunt mollit anim id est laborum ut
+                                  perspiciatis...
+                                </p>
+                              </div>
+                              <div class="wt-tag wt-widgettag">
+                                <a href="javascript:void(0);">Figma</a>
+                              </div>
+                            </div>
+                            <div class="wt-viewjobholder">
+                              <ul>
+                                <li>
+                                  <span
+                                    ><i
+                                      class="fa fa-dollar-sign wt-viewjobdollar"
+                                    ></i
+                                    >Professional</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><em
+                                      ><!--<img
+                                        src="images/flag/img-01.png"
+                                        alt="img description" />--></em
+                                    >Kigali, Rwanda</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><i
+                                      class="far fa-folder wt-viewjobfolder"
+                                    ></i
+                                    >Type: Per Hour</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><i class="far fa-clock wt-viewjobclock"></i
+                                    >Duration: 03 Months</span
+                                  >
+                                </li>
+                                <li>
+                                  <span
+                                    ><i class="fa fa-tag wt-viewjobtag"></i>Job
+                                    ID: gy3yV2Vm5u</span
+                                  >
+                                </li>
+                                <li>
+                                  <a href="javascript:void(0);"
+                                    ><i class="fa fa-heart"></i> Click to
+                                    Save</a
+                                  >
+                                </li>
+                                <li class="wt-btnarea">
+                                  <a href="jobsingle.html" class="wt-btn"
+                                    >View Job</a
+                                  >
+                                </li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- User Listing End-->
+          </div>
+        </main>
+        <!--Main End-->
+        <!--Footer Start-->
+        <footer id="wt-footer" class="wt-footer wt-haslayout">
+          <div class="wt-haslayout wt-footerbottom">
+            <div class="container">
+              <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                  <p class="wt-copyrights">
+                    <span>Sandy</span> © 2020 All Rights Reserved.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </footer>
+        <!--Footer End-->
+      </div>
+      <!--Content Wrapper End-->
+    </div>
+    <!--Wrapper End-->
+    <script src="js/vendor/jquery-3.3.1.js"></script>
+    <script src="js/vendor/jquery-library.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/chosen.jquery.js"></script>
+    <script src="js/tilt.jquery.js"></script>
+    <script src="js/scrollbar.min.js"></script>
+    <script src="js/prettyPhoto.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <script src="js/readmore.js"></script>
+    <script src="js/countTo.js"></script>
+    <script src="js/appear.js"></script>
+    <script src="js/tipso.js"></script>
+    <script src="js/jRate.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>
