@@ -31,9 +31,10 @@ public class Users {
     private String status;
     private String role;
     private String password;
-    
     @OneToMany(mappedBy = "user")
     private List<Booking> booking;
+    @OneToMany(mappedBy = "user",fetch = FetchType.EAGER)
+    private List<Image> images;
 
     public Users() {
     }
@@ -120,6 +121,14 @@ public class Users {
         this.password = password;
     }
 
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
+   
     @Override
     public String toString() {
         return "Users{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + ", category=" + category + ", pricePerHour=" + pricePerHour + ", status=" + status + ", role=" + role + ", password=" + password + ", booking=" + booking + '}';
