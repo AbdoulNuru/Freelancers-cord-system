@@ -28,6 +28,8 @@ public class Booking {
     private boolean paymentStatus=false;
     @ManyToOne
     private Users user;
+    @ManyToOne
+    private Users freelancers;
 
     public String getId() {
         return id;
@@ -75,6 +77,22 @@ public class Booking {
 
     public void setPaymentStatus(boolean paymentStatus) {
         this.paymentStatus = paymentStatus;
+    }
+
+    public Users getUser() {
+        return user;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
+    }
+
+    public Users getFreelancers() {
+        return freelancers;
+    }
+
+    public void setFreelancers(Users freelancers) {
+        this.freelancers = freelancers;
     }
 
    

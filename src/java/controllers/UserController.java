@@ -6,11 +6,13 @@
 package controllers;
 
 import common.FileUpload;
+import dao.BookingDao;
 import dao.ImageDao;
 import dao.UsersDao;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -18,6 +20,7 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import models.Booking;
 import models.Image;
 import models.Users;
 import org.primefaces.event.FileUploadEvent;
@@ -36,6 +39,8 @@ public class UserController {
     private Users freelancer = new Users();
     private Users targetUser = new Users();
     private List<String> images = new ArrayList<>();
+    private List<Image> selectedImage = new ArrayList<>();
+    private Users selectTargetUser = new Users();
     private String path = "E:\\AUCA\\SEM7\\Memoire\\Sandrine\\Freelancers-cord-system\\web\\resources\\images\\Freelancer-profile\\";
 
     public void save() throws NoSuchAlgorithmException {
@@ -81,15 +86,25 @@ public class UserController {
             } else {
                 System.out.println(exist.get(0));
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("userLoggedIn", exist.get(0));
-               System.out.println( FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userLoggedIn"));
+                System.out.println(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userLoggedIn"));
                 if (exist.get(0).getRole().equalsIgnoreCase("freelancer")) {
                     return "joblisting.xhtml";
-                } else {
+                } else if (exist.get(0).getRole().equalsIgnoreCase("employeer")) {
                     return "home.xhtml";
+                } else {
+                    return "login.xhtml";
                 }
             }
         }
         return null;
+    }
+
+    public String logout() {
+        FacesContext context = FacesContext.getCurrentInstance();
+        this.user = null;
+        context.getExternalContext().invalidateSession();
+        loggedInUser = null;
+        return "login.xhtml?faces-redirect=true";
     }
 
     public Users getUser() {
@@ -119,20 +134,21 @@ public class UserController {
     }
 
     public void upload(FileUploadEvent event) {
-        
+
         String newName = new FileUpload().Upload(event, path);
         images.add(newName);
-       
+
     }
-    public List<String> insertInto(String me){
+
+    public List<String> insertInto(String me) {
         images.add(me);
-         System.out.println("listing the name =>"+images);
+        System.out.println("listing the name =>" + images);
         return images;
     }
 //first get loggedInUser
 
     public void updateFreelancerProfile() {
-        System.out.println("listing the name =>"+images);
+        System.out.println("listing the name =>" + images);
         this.loggedInUser = (Users) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userLoggedIn");
         System.out.println("Helloooooooooooooooo" + loggedInUser.getEmail());
         this.targetUser = new UsersDao().findByOne(Users.class, loggedInUser.getId());
@@ -140,7 +156,7 @@ public class UserController {
         //new UsersDao().update(freelancer);
         //Here will put an object to be updated before uploading images
         System.out.println("Helloooooooooooooooo");
-        System.out.println("listing the name =>"+images);
+        System.out.println("listing the name =>" + images);
         for (String x : images) {
             Image imgs = new Image();
             imgs.setName(x);
@@ -150,6 +166,27 @@ public class UserController {
         }
         this.images = new ArrayList<>();
 
+    }
+
+    public void booking() {
+        this.loggedInUser = (Users) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userLoggedIn");
+
+        System.out.println("Begining of insert by " + this.loggedInUser);
+
+        Booking booking = new Booking();
+        booking.setUser(this.loggedInUser);
+        booking.setFreelancers(this.loggedInUser);
+        booking.setBookDate(new Date());
+        booking.setLocation("Kicukiro");
+        new BookingDao().create(booking);
+        System.out.println("Inserted into bookings");
+
+    }
+
+    public String assignFreelancers(Users users) throws Exception {
+        this.selectedImage = new ImageDao().getGenericListWithHQLParameter(new String[]{"user_id"}, new Object[]{users.getId()}, "Image");
+        this.selectTargetUser = users;
+        return "usersignle.xhtml?faces-redirect=true";
     }
 
     public List<Users> getGetAllUsers() {
@@ -184,5 +221,36 @@ public class UserController {
         this.targetUser = targetUser;
     }
 
-    
+    public List<String> getImages() {
+        return images;
+    }
+
+    public void setImages(List<String> images) {
+        this.images = images;
+    }
+
+    public List<Image> getSelectedImage() {
+        return selectedImage;
+    }
+
+    public void setSelectedImage(List<Image> selectedImage) {
+        this.selectedImage = selectedImage;
+    }
+
+    public Users getSelectTargetUser() {
+        return selectTargetUser;
+    }
+
+    public void setSelectTargetUser(Users selectTargetUser) {
+        this.selectTargetUser = selectTargetUser;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
 }
