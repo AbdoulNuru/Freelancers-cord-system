@@ -355,16 +355,22 @@
                                                         <span
                                                             class="wt-featuredtag wt-featuredtagcolor2"
                                                             ></span>
-                                                        <figure class="wt-userlistingimg">
-                                                            <img
-                                                                src="resources/images/Freelancer-profile/#{item.images.get(0).name}"
-                                                                alt="image description"
-                                                                />
-                                                        </figure>
+                                                        <h:form>
+                                                            <a  href="usersingle.xhtml?id=#{item.id}">
+                                                                <figure class="wt-userlistingimg">
+                                                                    <img
+                                                                        src="resources/images/Freelancer-profile/#{item.images.get(0).name}"
+                                                                        alt="image description"
+                                                                        />
+                                                                </figure>
+                                                            </a>
+                                                        </h:form>
+
+
                                                         <div class="wt-userlistingcontent">
                                                             <div class="wt-contenthead">
                                                                 <div class="wt-title">
-                                                                    <a href="usersingle.html"
+                                                                    <a href="usersingle.xhtml"
                                                                        ><i class="fa fa-check-circle"></i>#{item.getFirstName()} #{item.getLastName()}
                                                                     </a>
                                                                     <h2>#{item.getCategory()}</h2>
@@ -373,11 +379,11 @@
                                                                     <li>
                                                                         <span
                                                                             ><i class="far fa-money-bill-alt"></i>
-                                                                           Rwf #{item.getPricePerHour()} /Hr</span
+                                                                            Rwf #{item.getPricePerHour()} /Hr</span
                                                                         >
-                                                                          <span
+                                                                        <span
                                                                             ><i >Email:</i>
-                                                                           #{item.getEmail()}</span
+                                                                            #{item.getEmail()}</span
                                                                         >
                                                                     </li>
                                                                     <li>
@@ -390,11 +396,11 @@
                                                                         >
                                                                     </li>
                                                                     <li>
-                                                                        <a
-                                                                            href="javascript:void(0);"
-                                                                            class="wt-clicksave"
-                                                                            ><i class="fa fa-heart"></i> Save</a
-                                                                        >
+                                                                        <!--<a-->
+                                                                        <!--href="javascript:void(0);"-->
+                                                                        <!--class="wt-clicksave"-->
+                                                                        <!--><i class="fa fa-heart"></i> Save</a>-->
+
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -412,12 +418,12 @@
                                                         <div class="wt-description">
 
                                                         </div>
-<!--                                                        <div class="wt-tag wt-widgettag">
-                                                            <a href="javascript:void(0);">Photography</a>
-                                                            <a href="javascript:void(0);">Videography</a>
-                                                            <a href="javascript:void(0);">Film making</a>
-                                                            <a href="javascript:void(0);">...</a>
-                                                        </div>-->
+                                                        <!--                                                        <div class="wt-tag wt-widgettag">
+                                                                                                                    <a href="javascript:void(0);">Photography</a>
+                                                                                                                    <a href="javascript:void(0);">Videography</a>
+                                                                                                                    <a href="javascript:void(0);">Film making</a>
+                                                                                                                    <a href="javascript:void(0);">...</a>
+                                                                                                                </div>-->
                                                     </div>
 
                                                 </c:forEach>
