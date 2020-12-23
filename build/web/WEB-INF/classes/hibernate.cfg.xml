@@ -46,10 +46,12 @@ Contributor(s):
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/freelancers_cord_system?zeroDateTimeBehavior=convertToNull</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">@seth07</property>
-    <property name="hibernate.hbm2ddl.auto">update</property>
+    <property name="hibernate.hbm2ddl.auto">create</property>
     <property name="hibernate.show_sql">true</property>
     <mapping class="models.Booking"/>
     <mapping class="models.Users"/>
     <mapping class="models.Image"/>
+    <mapping class="models.Freelancer"/>
+    <mapping class="models.Employer"/>
   </session-factory>
 </hibernate-configuration>
