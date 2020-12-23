@@ -21,6 +21,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import models.Booking;
+import models.Freelancer;
 import models.Image;
 import models.Users;
 import org.primefaces.event.FileUploadEvent;
@@ -36,7 +37,7 @@ public class UserController {
     private Users user = new Users();
     private List<Users> getAllUsers = new UsersDao().allUsers("from Users");
     private Users loggedInUser;
-    private Users freelancer = new Users();
+    private Freelancer freelancer = new Freelancer();
     private Users targetUser = new Users();
     private List<String> images = new ArrayList<>();
     private List<Image> selectedImage = new ArrayList<>();
@@ -152,7 +153,7 @@ public class UserController {
         this.loggedInUser = (Users) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userLoggedIn");
         System.out.println("Helloooooooooooooooo" + loggedInUser.getEmail());
         this.targetUser = new UsersDao().findByOne(Users.class, loggedInUser.getId());
-        freelancer.setFirstName(loggedInUser.getFirstName());
+        freelancer.setFirstName(loggedInUser.getFreeLancer().get(0).getFirstName());
         //new UsersDao().update(freelancer);
         //Here will put an object to be updated before uploading images
         System.out.println("Helloooooooooooooooo");
@@ -205,13 +206,15 @@ public class UserController {
         this.loggedInUser = loggedInUser;
     }
 
-    public Users getFreelancer() {
+    public Freelancer getFreelancer() {
         return freelancer;
     }
 
-    public void setFreelancer(Users freelancer) {
+    public void setFreelancer(Freelancer freelancer) {
         this.freelancer = freelancer;
     }
+
+
 
     public Users getTargetUser() {
         return targetUser;

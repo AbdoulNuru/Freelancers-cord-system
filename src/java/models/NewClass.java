@@ -14,9 +14,9 @@ import dao.NewHibernateUtil;
  */
 public class NewClass {
     public static void main(String[] args) {
-       Users user = new Users();
+       Freelancer user = new Freelancer();
        user.setFirstName("hello");
-       new GenericDao<Users>().create(user);
+       new GenericDao<Freelancer>().create(user);
         
     }
     
