@@ -7,6 +7,8 @@ package controllers;
 
 import common.FileUpload;
 import dao.BookingDao;
+import dao.EmployerDao;
+import dao.FreelancerDao;
 import dao.ImageDao;
 import dao.UsersDao;
 import java.security.MessageDigest;
@@ -21,6 +23,7 @@ import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import models.Booking;
+import models.Employer;
 import models.Freelancer;
 import models.Image;
 import models.Users;
@@ -38,6 +41,8 @@ public class UserController {
     private List<Users> getAllUsers = new UsersDao().allUsers("from Users");
     private Users loggedInUser;
     private Freelancer freelancer = new Freelancer();
+     private Freelancer freelancer2 = new Freelancer();
+     private Employer employer = new Employer();
     private Users targetUser = new Users();
     private List<String> images = new ArrayList<>();
     private List<Image> selectedImage = new ArrayList<>();
@@ -55,7 +60,10 @@ public class UserController {
             user.setRole("freelancer");
             user.setStatus("active");
             new UsersDao().create(user);
+            this.freelancer.setUsers(user);
+           new FreelancerDao().create(freelancer2);
             user = new Users();
+            freelancer2 = new Freelancer();
             FacesContext.getCurrentInstance().
                     addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Your accout is successfully created, you can now login", null));
         }
@@ -64,7 +72,10 @@ public class UserController {
     public void saveEmployeer() throws NoSuchAlgorithmException {
         user.setPassword(encryptPassword(user.getPassword()));
         user.setRole("employeer");
+        user.setStatus("active");
         new UsersDao().create(user);
+        this.employer.setUsers(user);
+        new EmployerDao().create(employer);
         user = new Users();
         FacesMessage message = new FacesMessage("Your accout is successfully created, you can now login");
         FacesContext.getCurrentInstance().addMessage(null, message);
@@ -175,10 +186,9 @@ public class UserController {
         System.out.println("Begining of insert by " + this.loggedInUser);
 
         Booking booking = new Booking();
-        booking.setUser(this.loggedInUser);
-        booking.setFreelancers(this.loggedInUser);
+        booking.setEmployer(this.loggedInUser.getEmployer().get(0));
+        booking.setFreelancers(this.freelancer);
         booking.setBookDate(new Date());
-        booking.setLocation("Kicukiro");
         new BookingDao().create(booking);
         System.out.println("Inserted into bookings");
 
@@ -255,5 +265,22 @@ public class UserController {
     public void setPath(String path) {
         this.path = path;
     }
+
+    public Freelancer getFreelancer2() {
+        return freelancer2;
+    }
+
+    public void setFreelancer2(Freelancer freelancer2) {
+        this.freelancer2 = freelancer2;
+    }
+
+    public Employer getEmployer() {
+        return employer;
+    }
+
+    public void setEmployer(Employer employer) {
+        this.employer = employer;
+    }
+    
 
 }
