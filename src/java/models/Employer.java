@@ -59,6 +59,14 @@ public class Employer {
         this.address = address;
     }
 
+    public Users getUsers() {
+        return users;
+    }
+
+    public void setUsers(Users users) {
+        this.users = users;
+    }
+
  
     
     

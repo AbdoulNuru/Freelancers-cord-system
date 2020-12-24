@@ -28,13 +28,13 @@ public class Users {
     private String password;
     @OneToMany(mappedBy = "user")
     private List<Booking> booking;
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
     private List<Image> images;
 
-    @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "users",fetch = FetchType.LAZY)
     private List<Freelancer> freeLancer;
 
-    @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "users",fetch = FetchType.LAZY)
     private List<Employer> employer;
 
     public Users() {

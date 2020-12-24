@@ -27,9 +27,9 @@ public class Booking {
     private Double totalPrice;
     private boolean paymentStatus=false;
     @ManyToOne
-    private Users user;
+    private Employer employer;
     @ManyToOne
-    private Users freelancers;
+    private Freelancer freelancers;
 
     public String getId() {
         return id;
@@ -79,21 +79,31 @@ public class Booking {
         this.paymentStatus = paymentStatus;
     }
 
-    public Users getUser() {
-        return user;
+    public Employer getEmployer() {
+        return employer;
     }
 
-    public void setUser(Users user) {
-        this.user = user;
+    public void setEmployer(Employer employer) {
+        this.employer = employer;
     }
 
-    public Users getFreelancers() {
+  
+
+    public Freelancer getFreelancers() {
         return freelancers;
     }
 
-    public void setFreelancers(Users freelancers) {
+    public void setFreelancers(Freelancer freelancers) {
         this.freelancers = freelancers;
     }
+    
+
+    @Override
+    public String toString() {
+        return "Booking{" + "id=" + id + ", bookDate=" + bookDate + ", location=" + location + ", workType=" + workType + ", totalPrice=" + totalPrice + ", paymentStatus=" + paymentStatus + ", employer=" + employer + ", freelancers=" + freelancers + '}';
+    }
+
+ 
 
    
     
