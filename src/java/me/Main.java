@@ -7,6 +7,9 @@ package me;
 
 
 import dao.NewHibernateUtil;
+import dao.UsersDao;
+import java.util.List;
+import models.Users;
 import org.hibernate.Hibernate;
 
 /**
@@ -15,7 +18,6 @@ import org.hibernate.Hibernate;
  */
 public class Main {
     public static void main(String[] args) {
-        NewHibernateUtil.getSessionFactory().openSession();
-        NewHibernateUtil.getSessionFactory().close();
+        System.out.println(new UsersDao().findByEmail("seth@gmail.com"));
     }
 }

@@ -60,7 +60,7 @@ public class UserController {
             user.setRole("freelancer");
             user.setStatus("active");
             new UsersDao().create(user);
-            this.freelancer.setUsers(user);
+            this.freelancer2.setUsers(user);
            new FreelancerDao().create(freelancer2);
             user = new Users();
             freelancer2 = new Freelancer();
@@ -96,7 +96,7 @@ public class UserController {
                 FacesMessage message = new FacesMessage("Incorrect email or password");
                 FacesContext.getCurrentInstance().addMessage(null, message);
             } else {
-                System.out.println(exist.get(0));
+                System.out.println(exist);
                 FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("userLoggedIn", exist.get(0));
                 System.out.println(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userLoggedIn"));
                 if (exist.get(0).getRole().equalsIgnoreCase("freelancer")) {
@@ -141,7 +141,7 @@ public class UserController {
     }
 
     public List<Users> getAllFreelancers() {
-        System.out.println(new UsersDao().allUsers("freelancer").get(0).getImages().get(0).getName());
+        //System.out.println(new UsersDao().allUsers("freelancer").get(0).getImages().get(0).getName());
         return new UsersDao().allUsers("freelancer");
     }
 

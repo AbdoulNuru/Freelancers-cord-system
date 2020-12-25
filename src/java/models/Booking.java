@@ -30,7 +30,8 @@ public class Booking {
     private Employer employer;
     @ManyToOne
     private Freelancer freelancers;
-
+    @ManyToOne
+    private Users user;
     public String getId() {
         return id;
     }
