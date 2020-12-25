@@ -32,6 +32,7 @@ public class UsersDao extends GenericDao<Users> {
         Query q = ss.createQuery("from Users where email =:d");
         q.setString("d", email);
         List<Users> uno = q.list();
+        System.out.println(uno);
         return uno;
     }
     
@@ -41,8 +42,8 @@ public class UsersDao extends GenericDao<Users> {
      //return NewHibernateUtil.getSessionFactory().openSession().createQuery(x).list();
          
          Session ss = NewHibernateUtil.getSessionFactory().openSession();
-        Query q = ss.createQuery("from Users where role =:d");
-        q.setString("d", x);
+        Query q = ss.createQuery("from Users");
+       // q.setString("d", x);
         List<Users> uno = q.list();
         return uno;
 

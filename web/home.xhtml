@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <head>
         <meta charset="utf-8" />
@@ -37,9 +38,9 @@
           </p>
         <![endif]-->
         <!-- Preloader Start -->
-        <div class="preloader-outer">
-            <div class="loader"></div>
-        </div>
+        <!--        <div class="preloader-outer">
+                    <div class="loader"></div>
+                </div>-->
         <!-- Preloader End -->
         <!-- Wrapper Start -->
         <div id="wt-wrapper" class="wt-wrapper wt-haslayout">
@@ -356,14 +357,17 @@
                                                             class="wt-featuredtag wt-featuredtagcolor2"
                                                             ></span>
                                                         <h:form>
-                                                            <a  href="usersingle.xhtml?id=#{item.id}">
-                                                                <figure class="wt-userlistingimg">
-                                                                    <img
-                                                                        src="resources/images/Freelancer-profile/#{item.images.get(0).name}"
-                                                                        alt="image description"
-                                                                        />
-                                                                </figure>
-                                                            </a>
+                                                            <h:outputLink value="usersingle.xhtml">
+                                                                <f:param name="param1" value="#{item.id}" />
+
+                                                            </h:outputLink>
+                                                            <figure class="wt-userlistingimg">
+                                                                <img
+                                                                    src="resources/images/Freelancer-profile/#{item.images.get(0).name}"
+                                                                    alt="image description"
+                                                                    />
+                                                            </figure>
+                                                          
                                                         </h:form>
 
 

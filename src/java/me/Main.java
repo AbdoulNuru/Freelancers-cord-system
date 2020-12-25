@@ -6,6 +6,8 @@
 package me;
 
 
+import dao.EmployerDao;
+import dao.FreelancerDao;
 import dao.NewHibernateUtil;
 import dao.UsersDao;
 import java.util.List;
@@ -18,6 +20,13 @@ import org.hibernate.Hibernate;
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println(new UsersDao().findByEmail("seth@gmail.com"));
+        //System.out.println(new UsersDao().findByEmail("seth@gmail.com"));
+//     NewHibernateUtil.getSessionFactory().openSession();
+//       NewHibernateUtil.getSessionFactory().close();
+      //  System.out.println(new UsersDao().findByEmail("seth@gmail.com"));
+//        System.out.println(new FreelancerDao().getData());
+        //System.out.println(new UsersDao().allUsers("ju"));
+        //System.out.println(new FreelancerDao().findByEmail("nuru@gmail.com"));
+        System.out.println(new FreelancerDao().allFreelancer("active"));
     }
 }

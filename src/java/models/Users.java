@@ -28,8 +28,8 @@ public class Users {
     private String password;
     @OneToMany(mappedBy = "user")
     private List<Booking> booking;
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    private List<Image> images;
+//    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+//    private List<Image> images;
 
     @OneToMany(mappedBy = "users",fetch = FetchType.LAZY)
     private List<Freelancer> freeLancer;
@@ -80,13 +80,7 @@ public class Users {
         this.password = password;
     }
 
-    public List<Image> getImages() {
-        return images;
-    }
-
-    public void setImages(List<Image> images) {
-        this.images = images;
-    }
+ 
 
     public String getEmail() {
         return email;
@@ -112,11 +106,7 @@ public class Users {
         this.employer = employer;
     }
 
-    @Override
-    public String toString() {
-        return "Users{" + "id=" + id + ", status=" + status + ", role=" + role + ", email=" + email + ", password=" + password + ", booking=" + booking + ", images=" + images + ", freeLancer=" + freeLancer + ", employer=" + employer + '}';
-    }
-
+  
   
 
 }

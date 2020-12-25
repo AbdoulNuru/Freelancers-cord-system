@@ -72,11 +72,11 @@
                         id="wt-skills"
                       >
                         <div class="wt-yourdetails wt-tabsinfo">
-                          <form class="wt-formtheme wt-userform">
+                          <h:form class="wt-formtheme wt-userform">
                             <fieldset>
                               <div class="form-group form-group-half">
                                 <span class="wt-select">
-                                  <select>
+                                    <select >
                                     <option value="" disabled="">
                                       Work Type
                                     </option>
@@ -86,12 +86,15 @@
                                 </span>
                               </div>
                               <div class="form-group form-group-half">
-                                <input
-                                  type="text"
+                                  <h:inputText>
+                                      type="text"
                                   name="location"
                                   class="form-control"
                                   placeholder="Location"
-                                />
+                                  #{homeController.booking.location}
+                                  </h:inputText>
+                                  
+                        
                               </div>
                               <div class="form-group form-group-half">
                                 <input
@@ -107,11 +110,14 @@
                                   name="price"
                                   class="form-control"
                                   placeholder="Total Price"
+                                  
                                 />
                               </div>
                              
                             </fieldset>
-                          </form>
+                              <h:commandButton value="book" action="#{homeController.book()}"></h:commandButton>
+                          </h:form>
+                            
                         </div>
               
                         
