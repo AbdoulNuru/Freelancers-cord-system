@@ -6,10 +6,13 @@
 package models;
 
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -26,8 +29,29 @@ public class Freelancer {
     private Double pricePerHour;
     private Date createdAt= new Date();
     private String status;
+    private String email;
+    private String password;
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
     @ManyToOne
     private Users users;
+    
+    @OneToMany(mappedBy = "freelancer", fetch = FetchType.LAZY)
+    private List<Image> images;
 
     public String getId() {
         return id;
@@ -95,6 +119,15 @@ public class Freelancer {
         this.status = status;
     }
 
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
+
+    
     @Override
     public String toString() {
         return "Freelancer{" + "id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", category=" + category + ", pricePerHour=" + pricePerHour + ", createdAt=" + createdAt + ", status=" + status + ", users=" + users + '}';

@@ -51,20 +51,20 @@ and open the template in the editor.
                                 </div>
                                 <h:form>
                                     <h:inputText
-                                        class="form-control" id="fname" p:placeholder="First Name" value="#{userController.freelancer2.firstName}" required="true"
+                                        class="form-control" id="fname" p:placeholder="First Name" value="#{userController.freelancer.firstName}" required="true"
                                         requiredMessage="The firstname is required">
                                     </h:inputText>
                                     <h:message for="fname" class="errors"></h:message>
 
 
                                     <h:inputText
-                                        class="form-control" id="lname" p:placeholder="Last Name"  value="#{userController.freelancer2.lastName}" required="true"
+                                        class="form-control" id="lname" p:placeholder="Last Name"  value="#{userController.freelancer.lastName}" required="true"
                                         requiredMessage="The lastname is required"></h:inputText>
                                     <h:message for="lname" class="errors"></h:message>
 
 
                                     <h:inputText
-                                        class="form-control" id="email" required="true" requiredMessage="The email is required" validatorMessage="The provided email is not of valid" p:placeholder="E-mail Address"  value="#{userController.user.email}">
+                                        class="form-control" id="email" required="true" requiredMessage="The email is required" validatorMessage="The provided email is not of valid" p:placeholder="E-mail Address"  value="#{userController.freelancer.email}">
                                         <f:validateRegex pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" />
                                     </h:inputText>
                                     <h:message for="email" class="errors"></h:message>
@@ -83,7 +83,7 @@ and open the template in the editor.
                                         "
                                         required="true"
                                         requiredMessage="Please select a category"
-                                        value="#{userController.freelancer2.category}"
+                                        value="#{userController.freelancer.category}"
                                         >
                                         <f:selectItem itemLabel = "Category" />
                                         <f:selectItem itemValue = "Photographer" itemLabel = "Photographer" />
@@ -92,13 +92,13 @@ and open the template in the editor.
                                     <h:message for="cat" class="errors"></h:message>
 
                                     <h:inputText
-                                        class="form-control" id="rate" p:placeholder="Hourly rate in $"  value="#{userController.freelancer2.pricePerHour}" required="true" requiredMessage="The hourly rate is required" validatorMessage="The rate must be a number" converterMessage="Please enter digits only.">
+                                        class="form-control" id="rate" p:placeholder="Hourly rate in $"  value="#{userController.freelancer.pricePerHour}" required="true" requiredMessage="The hourly rate is required" validatorMessage="The rate must be a number" converterMessage="Please enter digits only.">
                                     </h:inputText>
                                     <h:message for="rate" class="errors"></h:message>
 
 
                                     <h:inputSecret
-                                        class="form-control" id="password" p:placeholder="Password"  value="#{userController.user.password}" required="true" requiredMessage="The password is required" validatorMessage="The password must be atleast 8 characters">
+                                        class="form-control" id="password" p:placeholder="Password"  value="#{userController.freelancer.password}" required="true" requiredMessage="The password is required" validatorMessage="The password must be atleast 8 characters">
                                         <f:validateLength minimum="8"/>
                                     </h:inputSecret>
                                     <h:message for="password" class="errors"></h:message>

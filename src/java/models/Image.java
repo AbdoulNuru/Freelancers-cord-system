@@ -20,7 +20,7 @@ public class Image {
     private String id=UUID.randomUUID().toString();
     private String name;
     @ManyToOne
-    private Users user;
+    private Freelancer freelancer;
 
     public String getId() {
         return id;
@@ -38,17 +38,19 @@ public class Image {
         this.name = name;
     }
 
-    public Users getUser() {
-        return user;
+    public Freelancer getFreelancer() {
+        return freelancer;
     }
 
-    public void setUser(Users user) {
-        this.user = user;
+    public void setFreelancer(Freelancer freelancer) {
+        this.freelancer = freelancer;
     }
+
+
 
     @Override
     public String toString() {
-        return "Image{" + "id=" + id + ", name=" + name + ", user=" + user + '}';
+        return "Image{" + "id=" + id + ", name=" + name + ", user=" + freelancer + '}';
     }
     
     

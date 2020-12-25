@@ -39,75 +39,89 @@ public class UserController {
 
     private Users user = new Users();
     private List<Users> getAllUsers = new UsersDao().allUsers("from Users");
-    private Users loggedInUser;
+    private Freelancer freelancerLoggedIn;
+    Employer employerLoggedIn;
     private Freelancer freelancer = new Freelancer();
-     private Freelancer freelancer2 = new Freelancer();
-     private Employer employer = new Employer();
-    private Users targetUser = new Users();
+    private Freelancer freelancer2 = new Freelancer();
+    private Employer employer = new Employer();
+    private Freelancer targetUser = new Freelancer();
     private List<String> images = new ArrayList<>();
     private List<Image> selectedImage = new ArrayList<>();
     private Users selectTargetUser = new Users();
     private String path = "E:\\AUCA\\SEM7\\Memoire\\Sandrine\\Freelancers-cord-system\\web\\resources\\images\\Freelancer-profile\\";
 
-    public void save() throws NoSuchAlgorithmException {
-        List<Users> userExist = new UsersDao().findByEmail(user.getEmail());
+    public UserController() {
+        this.getAllFreelancers();
+    }
 
-        if (!userExist.isEmpty()) {
+    
+    public void save() throws NoSuchAlgorithmException {
+        List<Freelancer> freelancerExist = new FreelancerDao().findByEmail(freelancer.getEmail());
+
+        if (!freelancerExist.isEmpty()) {
             FacesContext.getCurrentInstance().
                     addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "You already have an account, please login", null));
         } else {
-            user.setPassword(encryptPassword(user.getPassword()));
-            user.setRole("freelancer");
-            user.setStatus("active");
-            new UsersDao().create(user);
-            this.freelancer2.setUsers(user);
-           new FreelancerDao().create(freelancer2);
-            user = new Users();
-            freelancer2 = new Freelancer();
+            freelancer.setPassword(encryptPassword(freelancer.getPassword()));
+            freelancer.setStatus("active");
+
+            new FreelancerDao().create(freelancer);
+            freelancer = new Freelancer();
             FacesContext.getCurrentInstance().
                     addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Your accout is successfully created, you can now login", null));
         }
     }
 
     public void saveEmployeer() throws NoSuchAlgorithmException {
-        user.setPassword(encryptPassword(user.getPassword()));
-        user.setRole("employeer");
-        user.setStatus("active");
-        new UsersDao().create(user);
-        this.employer.setUsers(user);
+        employer.setPassword(encryptPassword(employer.getPassword()));
+        
         new EmployerDao().create(employer);
-        user = new Users();
+        employer = new Employer();
         FacesMessage message = new FacesMessage("Your accout is successfully created, you can now login");
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
 
     public String login() throws NoSuchAlgorithmException {
-        Users userLoggedIn = new Users();
+        freelancerLoggedIn = new Freelancer();
+        employerLoggedIn = new Employer();
         List<Users> exist = new UsersDao().findByEmail(user.getEmail());
+        List<Freelancer> freelancerExist = new FreelancerDao().findByEmail(freelancer.getEmail());
+        List<Employer> employerExist = new EmployerDao().findByEmail(employer.getEmail());
+        System.out.println(freelancerExist);
+        System.out.println(employerExist);
 
-        if (exist.isEmpty()) {
+        if (freelancerExist.isEmpty()) {
+            FacesMessage message = new FacesMessage("You don't have an account, please register");
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        }else if(employerExist.isEmpty()){
             FacesMessage message = new FacesMessage("You don't have an account, please register");
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
 
-        if (!exist.isEmpty()) {
-            //this.loggedInUser = userLoggedIn;
-            if (!exist.get(0).getPassword().equalsIgnoreCase(encryptPassword(user.getPassword()))) {
+        if (!freelancerExist.isEmpty()) {
+            if (!freelancerExist.get(0).getPassword().equalsIgnoreCase(encryptPassword(freelancer.getPassword()))) {
                 FacesMessage message = new FacesMessage("Incorrect email or password");
                 FacesContext.getCurrentInstance().addMessage(null, message);
             } else {
-                System.out.println(exist);
-                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("userLoggedIn", exist.get(0));
-                System.out.println(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userLoggedIn"));
-                if (exist.get(0).getRole().equalsIgnoreCase("freelancer")) {
-                    return "joblisting.xhtml";
-                } else if (exist.get(0).getRole().equalsIgnoreCase("employeer")) {
-                    return "home.xhtml";
-                } else {
-                    return "login.xhtml";
-                }
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("userLoggedIn", freelancerExist.get(0));
+//                System.out.println(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userLoggedIn"));
+//                System.out.println(exist.get(0).getRole().equalsIgnoreCase("freelancer"));
+                return "joblisting.xhtml";
             }
+        } else if (!employerExist.isEmpty()) {
+            if (!employerExist.get(0).getPassword().equalsIgnoreCase(encryptPassword(employer.getPassword()))) {
+                FacesMessage message = new FacesMessage("Incorrect email or password");
+                FacesContext.getCurrentInstance().addMessage(null, message);
+            } else {
+                FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("employerLoggedIn", employerExist.get(0));
+//                System.out.println(FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userLoggedIn"));
+//                System.out.println(exist.get(0).getRole().equalsIgnoreCase("freelancer"));
+                return "home.xhtml";
+            }
+        } else {
+            return "login.xhtml";
         }
+
         return null;
     }
 
@@ -115,7 +129,7 @@ public class UserController {
         FacesContext context = FacesContext.getCurrentInstance();
         this.user = null;
         context.getExternalContext().invalidateSession();
-        loggedInUser = null;
+        freelancerLoggedIn = null;
         return "login.xhtml?faces-redirect=true";
     }
 
@@ -140,9 +154,9 @@ public class UserController {
         return (sb.toString());
     }
 
-    public List<Users> getAllFreelancers() {
+    public List<Freelancer> getAllFreelancers() {
         //System.out.println(new UsersDao().allUsers("freelancer").get(0).getImages().get(0).getName());
-        return new UsersDao().allUsers("freelancer");
+        return new FreelancerDao().allFreelancer("active");
     }
 
     public void upload(FileUploadEvent event) {
@@ -161,10 +175,10 @@ public class UserController {
 
     public void updateFreelancerProfile() {
         System.out.println("listing the name =>" + images);
-        this.loggedInUser = (Users) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userLoggedIn");
-        System.out.println("Helloooooooooooooooo" + loggedInUser.getEmail());
-        this.targetUser = new UsersDao().findByOne(Users.class, loggedInUser.getId());
-        freelancer.setFirstName(loggedInUser.getFreeLancer().get(0).getFirstName());
+        this.freelancerLoggedIn = (Freelancer) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userLoggedIn");
+        System.out.println("Helloooooooooooooooo" + this.freelancerLoggedIn.getEmail());
+        this.targetUser = new FreelancerDao().findByOne(Freelancer.class, freelancerLoggedIn.getId());
+        freelancer.setFirstName(freelancerLoggedIn.getFirstName());
         //new UsersDao().update(freelancer);
         //Here will put an object to be updated before uploading images
         System.out.println("Helloooooooooooooooo");
@@ -172,7 +186,7 @@ public class UserController {
         for (String x : images) {
             Image imgs = new Image();
             imgs.setName(x);
-            imgs.setUser(targetUser);
+            imgs.setFreelancer(targetUser);
             new ImageDao().create(imgs);
             System.out.println("after saving ========");
         }
@@ -180,19 +194,19 @@ public class UserController {
 
     }
 
-    public void booking() {
-        this.loggedInUser = (Users) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userLoggedIn");
-
-        System.out.println("Begining of insert by " + this.loggedInUser);
-
-        Booking booking = new Booking();
-        booking.setEmployer(this.loggedInUser.getEmployer().get(0));
-        booking.setFreelancers(this.freelancer);
-        booking.setBookDate(new Date());
-        new BookingDao().create(booking);
-        System.out.println("Inserted into bookings");
-
-    }
+//    public void booking() {
+//        this.loggedInUser = (Users) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userLoggedIn");
+//
+//        System.out.println("Begining of insert by " + this.loggedInUser);
+//
+//        Booking booking = new Booking();
+//        booking.setEmployer(this.loggedInUser.getEmployer().get(0));
+//        booking.setFreelancers(this.freelancer);
+//        booking.setBookDate(new Date());
+//        new BookingDao().create(booking);
+//        System.out.println("Inserted into bookings");
+//
+//    }
 
     public String assignFreelancers(Users users) throws Exception {
         this.selectedImage = new ImageDao().getGenericListWithHQLParameter(new String[]{"user_id"}, new Object[]{users.getId()}, "Image");
@@ -208,13 +222,23 @@ public class UserController {
         this.getAllUsers = getAllUsers;
     }
 
-    public Users getLoggedInUser() {
-        return loggedInUser;
+    public Freelancer getFreelancerLoggedIn() {
+        return freelancerLoggedIn;
     }
 
-    public void setLoggedInUser(Users loggedInUser) {
-        this.loggedInUser = loggedInUser;
+    public void setFreelancerLoggedIn(Freelancer freelancerLoggedIn) {
+        this.freelancerLoggedIn = freelancerLoggedIn;
     }
+
+    public Freelancer getTargetUser() {
+        return targetUser;
+    }
+
+    public void setTargetUser(Freelancer targetUser) {
+        this.targetUser = targetUser;
+    }
+
+   
 
     public Freelancer getFreelancer() {
         return freelancer;
@@ -224,15 +248,7 @@ public class UserController {
         this.freelancer = freelancer;
     }
 
-
-
-    public Users getTargetUser() {
-        return targetUser;
-    }
-
-    public void setTargetUser(Users targetUser) {
-        this.targetUser = targetUser;
-    }
+   
 
     public List<String> getImages() {
         return images;
@@ -281,6 +297,5 @@ public class UserController {
     public void setEmployer(Employer employer) {
         this.employer = employer;
     }
-    
 
 }

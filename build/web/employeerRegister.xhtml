@@ -62,14 +62,14 @@ and open the template in the editor.
 
 
                                 <h:inputText
-                                    class="form-control" id="email" required="true" requiredMessage="The email is required" validatorMessage="The provided email is not of valid" p:placeholder="E-mail Address"  value="#{userController.user.email}">
+                                    class="form-control" id="email" required="true" requiredMessage="The email is required" validatorMessage="The provided email is not of valid" p:placeholder="E-mail Address"  value="#{userController.employer.email}">
                                     <f:validateRegex pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" />
                                 </h:inputText>
                                 <h:message for="email" class="errors"></h:message>
 
 
                                 <h:inputSecret
-                                    class="form-control" id="password" p:placeholder="Password"  value="#{userController.user.password}" required="true" requiredMessage="The password is required" validatorMessage="The password must be atleast 8 characters">
+                                    class="form-control" id="password" p:placeholder="Password"  value="#{userController.employer.password}" required="true" requiredMessage="The password is required" validatorMessage="The password must be atleast 8 characters">
                                     <f:validateLength minimum="8"/>
                                 </h:inputSecret>
                                 <h:message for="password" class="errors"></h:message>
