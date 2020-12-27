@@ -3,6 +3,8 @@ package controllers;
 import dao.BookingDao;
 import dao.FreelancerDao;
 import dao.UsersDao;
+import java.util.ArrayList;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
@@ -26,10 +28,12 @@ import models.Users;
 @SessionScoped
 public class HomeController {
     private UsersDao userDao  = new UsersDao();
-    private Freelancer user;
+    private Freelancer user = new Freelancer();
     private Booking booking= new Booking();
     String id = "";
     Employer employerLoggedIn;
+    Freelancer freelancerLoggedin;
+    private List<Booking> mybooking = new ArrayList<>();
 
     public UsersDao getUserDao() {
         return userDao;
@@ -48,7 +52,7 @@ public class HomeController {
     public Freelancer getUser() {
         return this.user;
     }
-    public void book(){
+    public String book(){
         System.out.println(id);
         Freelancer fre = new FreelancerDao().findByOne(Freelancer.class, id);
         //employerLoggedIn
@@ -57,8 +61,10 @@ public class HomeController {
          booking.setFreelancers(fre);
          System.out.println("daljfa "+ id);
          new BookingDao().create(booking);
+         return "home";
         
     }
+    
 
     public Booking getBooking() {
         return booking;
@@ -83,5 +89,17 @@ public class HomeController {
     public void setEmployerLoggedIn(Employer employerLoggedIn) {
         this.employerLoggedIn = employerLoggedIn;
     }
+
+    public List<Booking> getMybooking() {
+        this.freelancerLoggedin = (Freelancer) FacesContext.getCurrentInstance().getExternalContext().getSessionMap().get("userLoggedIn");
+        System.out.println("the id of the freelance => "+this.freelancerLoggedin.getId());
+        mybooking = new BookingDao().findAll(this.freelancerLoggedin.getId());
+        return mybooking;
+    }
+
+    public void setMybooking(List<Booking> mybooking) {
+        this.mybooking = mybooking;
+    }
+    
     
 }

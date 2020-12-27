@@ -5,6 +5,7 @@
  */
 package controllers;
 
+import com.sun.javafx.scene.control.skin.VirtualFlow;
 import common.FileUpload;
 import dao.BookingDao;
 import dao.EmployerDao;
@@ -40,6 +41,7 @@ public class UserController {
     private Users user = new Users();
     private List<Users> getAllUsers = new UsersDao().allUsers("from Users");
     private Freelancer freelancerLoggedIn;
+    private List<Freelancer> activeFreelancers  = new VirtualFlow.ArrayLinkedList<>();
     Employer employerLoggedIn;
     private Freelancer freelancer = new Freelancer();
     private Freelancer freelancer2 = new Freelancer();
@@ -49,10 +51,6 @@ public class UserController {
     private List<Image> selectedImage = new ArrayList<>();
     private Users selectTargetUser = new Users();
     private String path = "E:\\AUCA\\SEM7\\Memoire\\Sandrine\\Freelancers-cord-system\\web\\resources\\images\\Freelancer-profile\\";
-
-    public UserController() {
-        this.getAllFreelancers();
-    }
 
     
     public void save() throws NoSuchAlgorithmException {
@@ -226,6 +224,14 @@ public class UserController {
         return freelancerLoggedIn;
     }
 
+    public List<Freelancer> getActiveFreelancers() {
+        return new FreelancerDao().allFreelancer("active");
+    }
+
+    public void setActiveFreelancers(List<Freelancer> activeFreelancers) {
+        this.activeFreelancers = activeFreelancers;
+    }
+    
     public void setFreelancerLoggedIn(Freelancer freelancerLoggedIn) {
         this.freelancerLoggedIn = freelancerLoggedIn;
     }

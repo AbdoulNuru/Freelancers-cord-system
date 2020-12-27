@@ -351,19 +351,19 @@
                                             <div
                                                 class="wt-userlistingholder wt-userlisting wt-haslayout"
                                                 >
-                                                <c:forEach items="#{userController.getAllFreelancers()}" var="item">
+                                                <c:forEach items="#{userController.activeFreelancers}" var="item">
                                                     <div class="wt-userlistinghold wt-featured">
                                                         <span
                                                             class="wt-featuredtag wt-featuredtagcolor2"
                                                             ></span>
                                                         <h:form>
                                                             <h:outputLink value="usersingle.xhtml">
-                                                                <f:param name="param1" value="#{item.id}" />
+                                                                <f:param name="param1" value="#{homeController.setId(item.id)}" />
 
                                                             </h:outputLink>
                                                             <figure class="wt-userlistingimg">
                                                                 <img
-                                                                    src="resources/images/Freelancer-profile/#{item.images.get(0).name}"
+                                                                    src="resources/images/Freelancer-profile/"
                                                                     alt="image description"
                                                                     />
                                                             </figure>

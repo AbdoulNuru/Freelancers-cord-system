@@ -47,7 +47,6 @@ Contributor(s):
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.hbm2ddl.auto">update</property>
     <property name="hibernate.show_sql">true</property>
-    <property name="hibernate.connection.password">@seth07</property>
     <mapping class="models.Booking"/>
     <mapping class="models.Users"/>
     <mapping class="models.Image"/>
